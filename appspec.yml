@@ -1,3 +1,4 @@
+#this can be used to deploy nodejs app running with pm2 and ec2 attached with elb
 version: 0.0
 os: linux
 files:
@@ -6,9 +7,9 @@ files:
     overwrite: yes/skip/fail
 hooks:
   BeforeInstall:
-    - location: scripts/remove.sh
-  ApplicationStop:
     - location: scripts/deregister_from_elb.sh
+    - location: scripts/remove.sh
+    - location: scripts/pm2stop.sh
   AfterInstall:
      - location: scripts/npminstall.sh
      - location: scripts/pm2restart.sh
