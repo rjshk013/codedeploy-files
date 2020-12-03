@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/Ekam_File/
+    overwrite: yes/skip/fail
+hooks:
+  BeforeInstall:
+    - location: scripts/remove.sh
+    - location: scripts/pm2stop.sh
+  AfterInstall:
+     - location: scripts/npminstall.sh
+  ApplicationStart:
+    - location: scripts/pm2restart.sh
+
