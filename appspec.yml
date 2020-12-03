@@ -3,7 +3,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/Ekam_File/
+    destination: /home/projectfolder/
     overwrite: yes/skip/fail
 hooks:
   BeforeInstall:
