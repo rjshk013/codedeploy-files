@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/Ekam_File/
+    overwrite: yes/skip/fail
+hooks:
+  BeforeInstall:
+    - location: scripts/remove.sh
+  ApplicationStop:
+    - location: scripts/deregister_from_elb.sh
+  AfterInstall:
+     - location: scripts/npminstall.sh
+     - location: scripts/pm2restart.sh
+  ApplicationStart:
+    - location: scripts/register_with_elb.sh
+
